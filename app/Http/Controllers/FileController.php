@@ -11,7 +11,10 @@ class FileController extends Controller
     public function index()
     {
         $files = File::where('user_id', auth()->id())->get(); // Menampilkan file milik user login
-        return view('dashboard.files.index', compact('files'));
+
+        $countFiles = File::count();
+
+        return view('dashboard.files.index', compact('files', 'countFiles'));
     }
 
     public function store(Request $request)

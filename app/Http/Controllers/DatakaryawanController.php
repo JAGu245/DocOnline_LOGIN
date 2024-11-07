@@ -11,18 +11,18 @@ class DatakaryawanController extends Controller
 {
     public function index(Request $request)
     {
-        // Cek apakah ada parameter 'nik' dari form pencarian
         $query = Datakaryawan::query();
 
         if ($request->has('nik') && $request->nik != '') {
             $query->where('nik', 'like', '%' . $request->nik . '%');
         }
 
-        // Ambil data karyawan sesuai pencarian
         $datakaryawans = $query->get();
+        $countkaryawan = Datakaryawan::count(); // Menghitung jumlah data karyawan
 
-        return view('dashboard.datakaryawan.index', compact('datakaryawans'));
+        return view('dashboard.datakaryawan.index', compact('datakaryawans', 'countkaryawan'));
     }
+
 
     public function create()
     {

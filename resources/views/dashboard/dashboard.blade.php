@@ -1,64 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- Tambahkan CSS Bootstrap atau CSS lainnya -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>DocOnline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="position-sticky pt-3">
-                    <h5 class="sidebar-heading">Dashboard</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('home') }}">
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('datakaryawan.index') }}">
-                                Data Karyawan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('files.index') }}">
-                                Dokumen
-                            </a>
-                        </li>
-                        <!-- Tambahkan menu lainnya jika diperlukan -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </ul>
-                </div>
-            </nav>
 
-            <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2"></h1>
-                </div>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <nav class="w-64 bg-gray-800 text-white p-6">
+            <h5 class="text-lg font-semibold mb-6">Document</h5>
+            <ul class="space-y-4">
+                <li>
+                    <a href="{{ route('home') }}" class="text-gray-300 hover:text-white">Home</a>
+                </li>
+                <li>
+                    <a href="{{ route('datakaryawan.index') }}" class="text-gray-300 hover:text-white">Data Karyawan</a>
+                </li>
+                <li>
+                    <a href="{{ route('files.index') }}" class="text-gray-300 hover:text-white">Dokumen</a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" class="text-gray-300 hover:text-white"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </nav>
 
-                <!-- Content Section -->
-                <div>
-                    @yield('content')
-                </div>
-            </main>
-        </div>
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <div class="flex justify-between items-center mb-6 border-b pb-2">
+                <h1 class="text-2xl font-semibold"></h1>
+            </div>
+
+            <div>
+                @yield('content')
+            </div>
+        </main>
     </div>
 
-    <!-- Tambahkan JS Bootstrap atau JS lainnya -->
+    <!-- Tambahkan JS (Jika perlu) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
