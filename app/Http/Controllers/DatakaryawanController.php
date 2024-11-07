@@ -32,13 +32,17 @@ class DatakaryawanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nik' => 'required|unique:datakaryawan',
+            'nik' => 'required|regex:/^\d{4}-\d{4}$/|unique:datakaryawan',
             'nama' => 'required',
-            'password' => 'required',
-            // tambahkan validasi untuk field lain
+            'pangkat' => 'nullable',
+            'divisi' => 'nullable',
+            'dealer' => 'nullable',
+            'posisi' => 'nullable',
+            'divisiho' => 'nullable',
+            'password' => 'required|min:8',
         ]);
 
-        $datakaryawan = Datakaryawan::create([
+        Datakaryawan::create([
             'nik' => $request->nik,
             'nama' => $request->nama,
             'pangkat' => $request->pangkat,
@@ -49,14 +53,7 @@ class DatakaryawanController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Buat User dari Data Karyawan
-        User::create([
-            'name' => $request->nama,
-            'nik' => $request->nik, // Bisa disesuaikan sesuai kebutuhan
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('datakaryawan.index');
+        return redirect()->route('datakaryawan.index')->with('success', 'Data karyawan berhasil disimpan.');
     }
 
     public function edit(Datakaryawan $datakaryawan)

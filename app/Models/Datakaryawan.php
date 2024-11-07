@@ -13,12 +13,12 @@ class Datakaryawan extends Model
 
     protected $fillable = [
         'nik',
-        'name',
-        'rank',
-        'division',
+        'nama',
+        'pangkat',
+        'divisi',
         'dealer',
-        'position',
-        'divisionho',
+        'posisi',
+        'divisiho',
         'password',
     ];
 }

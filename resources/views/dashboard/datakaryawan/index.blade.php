@@ -12,7 +12,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Cari</button>
         </form>
-
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('datakaryawan.create') }}" class="btn btn-success">Tambah Karyawan</a>
+        </div>
         <hr>
 
         <!-- Tabel Karyawan -->
