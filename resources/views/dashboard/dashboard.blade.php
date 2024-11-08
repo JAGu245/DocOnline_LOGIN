@@ -21,6 +21,9 @@
                     <a href="{{ route('datakaryawan.index') }}" class="text-gray-300 hover:text-white">Data Karyawan</a>
                 </li>
                 <li>
+                    <a href="{{ route('users.index') }}" class="text-gray-300 hover:text-white">User</a>
+                </li>
+                <li>
                     <a href="{{ route('files.index') }}" class="text-gray-300 hover:text-white">Dokumen</a>
                 </li>
                 <li>

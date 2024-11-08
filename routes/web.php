@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatakaryawanController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -42,3 +43,5 @@ Route::get('/files/download/{id}', [FileController::class, 'download'])->name('f
 
 Route::post('/file/upload', [FileController::class, 'upload'])->name('file.upload');
 Route::get('/file/download/{id}', [FileController::class, 'download'])->name('file.download');
+
+Route::resource('users', UserController::class);

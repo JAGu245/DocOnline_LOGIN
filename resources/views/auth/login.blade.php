@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<script src="https://cdn.tailwindcss.com"></script>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

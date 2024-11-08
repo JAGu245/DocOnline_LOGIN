@@ -1,5 +1,5 @@
 @extends('dashboard.dashboard')
-
+<script src="https://cdn.tailwindcss.com"></script>
 @section('content')
 <h1>Tambah Data Karyawan</h1>
 <form action="{{ route('datakaryawan.store') }}" method="POST">
